@@ -21,15 +21,25 @@ Pour chaque étape il faut produire les fichiers YAML nécessaires et les conser
 - Vous pouvez alors accéder via votre navigateur au service créé précédemment
 Faites une capture d'écran de la page sur votre navigateur avec le nom de domaine de votre choix pour votre service.
 
+---
+
 ## Les Technos
 
 - Docker
 - Kubernetes
 - Minikube
 
+---
+
 ## Pour tester chaques parties du TP
 
 Commande à lancer dans le temrinal à la racine du projet :
+
+La commande ci-jointe est nécessaire sur Mac M1 afin que tout fonctionne.
+
+```cmd
+minikube tunnel
+```
 
 ### Partie 1
 
@@ -61,31 +71,94 @@ kubectl port-forward publicecho  8080:8080
 kubectl delete pod publicecho
 ```
 
-![screenshot](https://github.com/maxlestage/BONUS-WIK-TP03/blob/main/images/WP_test_comment2.png)
+### Partie 2
 
-LESTAGE Maxime - TP DevOps n°3 - BONUS - Ynov 2022.
-
-Partie 2
+```cmd
 minikube start
+```
+
+```cmd
 minikube tunnel
+```
+
+```cmd
 minikube addons enable ingress  
+```
+
+```cmd
 kubectl apply -f replicaset.yaml
-kubectl get pods # 4 services qui tournent
-kubectl  get serviceskubectl port-forward replicaset.apps/part2  8080:8080
+```
+
+```cmd
+kubectl get pods 
+```
+
+```cmd
+kubectl get serviceskubectl port-forward replicaset.apps/part2 8080:8080
+```
+
+```cmd
 kubectl delete replicaset.apps/part2
-kubectl  get services # tout est bien coupé.
+```
 
-Partie 3
+```cmd
+kubectl get services 
+```
+
+### Partie 3
+
+```cmd
 minikube start
+```
+
+```cmd
 minikube tunnel
+```
+
+```cmd
 minikube addons enable ingress  
+```
+
+```cmd
 kubectl apply -f deployment.yaml
-kubectl  get services
-kubectl port-forward deployment.apps/part3  8080:8080
+```
 
-Partie 4
+```cmd
+kubectl  get services
+```
+
+```cmd
+kubectl port-forward deployment.apps/part3  8080:8080
+```
+
+### Partie 4
+
+```cmd
 minikube start
+```
+
+```cmd
 minikube tunnel
-minikube addons enable ingress  
+```
+
+```cmd
+minikube addons enable ingress 
+```
+
+```cmd
 kubectl apply -f ingress.yaml
-kubectl get pods,services,deployments,ingress.networking.k8s.io  
+```
+
+```cmd
+kubectl get pods,services,deployments,ingress.networking.k8s.io 
+```
+
+---
+
+## Une capture d'écran de la page sur le navigateur avec le nom de domaine personalisé
+
+![screenshot](https://github.com/maxlestage/TP-WIK-DPS-TP04/blob/main/MicrosoftTeams-image.png)
+
+---
+
+LESTAGE Maxime - TP DevOps n°4 - Ynov 2022.
